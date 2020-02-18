@@ -96,6 +96,7 @@ public class RuleConvertNumber {
         }
         return result.replaceAll(" {2,}", " "); // to avoid double whitespaces
     }
+
 // correct ending for thousands
     private static String getEndThousand(String str) {
         if (str.equals("ноль")) {
