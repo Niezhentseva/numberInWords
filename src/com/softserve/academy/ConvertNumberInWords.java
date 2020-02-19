@@ -6,20 +6,25 @@
 package com.softserve.academy;
 
 public class ConvertNumberInWords {
+    public static String continueProgram = "Do you want to continue? (y/yes or n/no)";
+    public static String startProgram = "Enter a number in range of " +
+            "- 999 999 999 999 and 999 999 999 999";
+    public static String informError = "Invalid input number.  Enter a number in range of " +
+            "-999 999 999 999 and 999 999 999 999!";
 
     public static void main(String[] args) {
+
         do {
-            ConsoleIO.startProgram();
-            NumberOfDigits number = new NumberOfDigits(ConsoleIO.enterNumber());
-            NumberInWords numberInW = new NumberInWords();
+            ConsoleIO.printToConsole(startProgram);
             try {
-                long data = Long.parseLong(number.getNumberOfDigits());
-                String numberInWords = numberInW.convert(data);
-                System.out.println(numberInWords);
+                long data = Long.parseLong(ConsoleIO.enterNumber());
+                NumberInWords numberInW = new NumberInWords(data);
+                String numberInWords = numberInW.getNumberToString();
+                ConsoleIO.printToConsole(numberInWords);
             } catch (NumberFormatException e) {
-                ConsoleIO.informError();
-                }
-            ConsoleIO.continueProgram();
+                ConsoleIO.printToConsole(informError);
+            }
+            ConsoleIO.printToConsole(continueProgram);
         } while (ConsoleIO.isContinue());
         ConsoleIO.closeScanner();
     }

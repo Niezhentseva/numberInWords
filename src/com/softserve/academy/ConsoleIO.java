@@ -18,16 +18,7 @@ public class ConsoleIO{
     public static void closeScanner() {
         scanner.close();
     }
-
-    public static void startProgram() {
-        System.out.println("Enter a number in range of " +
-                "- 999 999 999 999 and 999 999 999 999");
-    }
-    public static void continueProgram() {
-        System.out.println("Do you want to continue? (y/yes or n/no)");
-    }
-    public static void informError() {
-        System.out.println("Invalid input number.  Enter a number in range of " +
-                "-999 999 999 999 and 999 999 999 999!");
+    public static void printToConsole(String message){
+        System.out.println(message);
     }
 }

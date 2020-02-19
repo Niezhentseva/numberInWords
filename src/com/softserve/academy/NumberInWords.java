@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NumberInWords {
+    private long number;
+    private String numberToString;
 
-   //Constants for common use
+    //Constants for common use
     private static final long TEN = 10;
     private static final long TWENTY = 20;
     private static final long ONE_HUNDRED = 100;
@@ -59,7 +61,18 @@ public class NumberInWords {
         HUNDREDS.put(9L, "девятьсот");
     }
 
-    String convert(long number) {
+    public NumberInWords(long number) {
+        this.number = number;
+    }
+
+    public String getNumberToString() {
+        if (numberToString == null) {
+            numberToString = convert(number);
+        }
+        return numberToString;
+    }
+
+    private String convert(long number) {
         String numberInWords;
         if (number < 0) {
             numberInWords = "минус " + convert(Math.abs(number));
@@ -97,24 +110,25 @@ public class NumberInWords {
         return numberInWords.replaceAll(" {2,}", " "); // to avoid double whitespaces
     }
 
-// correct ending for thousands
+    // correct ending for thousands
     private String getEndThousand(String str) {
         if (str.equals("ноль")) {
             return "";
         } else if (str.endsWith("один")) {
             return str.replace("один", "одна тысяча");
         } else if (str.endsWith("два")) {
-                if (str.endsWith("двадцать два")){
+            if (str.endsWith("двадцать два")) {
                 return str.replace("двадцать два", "двадцать две тысячи");
-                }else{
-                    return str.replace("два", "две тысячи");
-                }
+            } else {
+                return str.replace("два", "две тысячи");
+            }
         } else if (str.endsWith("три") || str.endsWith("четыре")) {
             return str + " тысячи";
         } else {
             return str + " тысяч";
         }
     }
+
     // correct ending for millions
     private String getEndMillion(String str) {
         if (str.equals("ноль")) {
@@ -127,6 +141,7 @@ public class NumberInWords {
             return str + " миллионов";
         }
     }
+
     // correct ending for billions
     private String getEndBillion(String str) {
         if (str.equals("ноль")) {
