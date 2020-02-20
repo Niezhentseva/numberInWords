@@ -2,7 +2,7 @@ package com.softserve.academy;
 
 import java.util.Scanner;
 
-public class ConsoleIO{
+public class ConsoleIO {
     static Scanner scanner = new Scanner(System.in);
 
     public static String enterNumber() {
@@ -18,7 +18,8 @@ public class ConsoleIO{
     public static void closeScanner() {
         scanner.close();
     }
-    public static void printToConsole(String message){
+
+    public static void printToConsole(String message) {
         System.out.println(message);
     }
 }

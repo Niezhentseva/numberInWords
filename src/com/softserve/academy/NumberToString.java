@@ -3,7 +3,7 @@ package com.softserve.academy;
 import java.util.HashMap;
 import java.util.Map;
 
-public class NumberInWords {
+public class NumberToString {
     private long number;
     private String numberToString;
 
@@ -61,7 +61,7 @@ public class NumberInWords {
         HUNDREDS.put(9L, "девятьсот");
     }
 
-    public NumberInWords(long number) {
+    public NumberToString(long number) {
         this.number = number;
     }
 
@@ -73,31 +73,30 @@ public class NumberInWords {
     }
 
     private String convert(long number) {
-        String numberInWords;
         if (number < 0) {
-            numberInWords = "минус " + convert(Math.abs(number));
+            numberToString = "минус " + convert(Math.abs(number));
         } else if (number < TWENTY) {
-            numberInWords = UNITS.get(number);
+            numberToString = UNITS.get(number);
         } else if (number < ONE_HUNDRED) {
-            numberInWords = (TENS.get(number / TEN)
+            numberToString = (TENS.get(number / TEN)
                     + (number % TEN > 0 ? " "
                     + convert(number % TEN) : ""));
         } else if (number < ONE_THOUSAND) {
-            numberInWords = (HUNDREDS.get(number / ONE_HUNDRED)
+            numberToString = (HUNDREDS.get(number / ONE_HUNDRED)
                     + (number % ONE_HUNDRED > 0 ? " "
                     + convert(number % ONE_HUNDRED) : ""));
         } else if (number < ONE_MILLION) {
-            numberInWords = getEndThousand(convert((number / ONE_THOUSAND)))
+            numberToString = getEndThousand(convert((number / ONE_THOUSAND)))
                     + (number % ONE_THOUSAND > 0 ? " "
                     + convert(number % ONE_THOUSAND) : "");
         } else if (number < ONE_BILLION) {
-            numberInWords = getEndMillion(convert((number / ONE_MILLION)))
+            numberToString = getEndMillion(convert((number / ONE_MILLION)))
                     + " "
                     + getEndThousand(convert(((number % ONE_MILLION) / ONE_THOUSAND)))
                     + (number % ONE_THOUSAND > 0 ? " "
                     + convert(number % ONE_THOUSAND) : "");
         } else if (number < ONE_TRILLION) {
-            numberInWords = getEndBillion(convert((number / ONE_BILLION)))
+            numberToString = getEndBillion(convert((number / ONE_BILLION)))
                     + " "
                     + getEndMillion(convert((number % ONE_BILLION) / ONE_MILLION))
                     + " "
@@ -107,7 +106,7 @@ public class NumberInWords {
         } else {
             return "This number is not supported";
         }
-        return numberInWords.replaceAll(" {2,}", " "); // to avoid double whitespaces
+        return numberToString.replaceAll(" {2,}", " "); // to avoid double whitespaces
     }
 
     // correct ending for thousands

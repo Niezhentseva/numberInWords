@@ -5,7 +5,7 @@
  */
 package com.softserve.academy;
 
-public class ConvertNumberInWords {
+public class ConverterNumberToString {
     public static String continueProgram = "Do you want to continue? (y/yes or n/no)";
     public static String startProgram = "Enter a number in range of " +
             "- 999 999 999 999 and 999 999 999 999";
@@ -18,8 +18,8 @@ public class ConvertNumberInWords {
             ConsoleIO.printToConsole(startProgram);
             try {
                 long data = Long.parseLong(ConsoleIO.enterNumber());
-                NumberInWords numberInW = new NumberInWords(data);
-                String numberInWords = numberInW.getNumberToString();
+                NumberToString numberToString = new NumberToString(data);
+                String numberInWords = numberToString.getNumberToString();
                 ConsoleIO.printToConsole(numberInWords);
             } catch (NumberFormatException e) {
                 ConsoleIO.printToConsole(informError);
